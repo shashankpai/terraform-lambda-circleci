@@ -25,13 +25,13 @@ jobs:
       - run:
           name: Terraform Plan
           command: |
-            cd artifacts/
+            cd
             terraform init
             terraform plan
       - run:
           name: Terraform Apply
           command: |
-            cd artifacts/
+            cd
             terraform apply --auto-approve
       - persist_to_workspace:
           root: ./
