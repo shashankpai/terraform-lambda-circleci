@@ -1,5 +1,4 @@
 version: 2.1
-
 executors:
   terraform-executor:
     docker:
@@ -18,6 +17,7 @@ jobs:
             terraform fmt --check
   terraform-plan-and-apply:
     executor: terraform-executor
+    working_directory: ~/repo
     steps:
       - checkout
       - run:
