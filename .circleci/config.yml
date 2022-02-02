@@ -14,7 +14,7 @@ jobs:
           command: |
             terraform init --backend=false
             terraform validate
-            terraform fm --check
+            terraform fmt --check
 
   terraform-plan-and-apply:
     executor: terraform-executor
@@ -44,7 +44,6 @@ jobs:
       - run:
           name: Terraform Destroy
           command: |
-            cd artifacts/
             terraform init
             terraform destroy --auto-approve
 
@@ -58,7 +57,7 @@ workflows:
       - hold:
           type: approval
           requires:
-            - terraform-destroy
+            - terraform-plan-and-apply
       - terraform-destory:
           requires:
             - hold
