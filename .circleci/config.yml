@@ -20,11 +20,10 @@ jobs:
     executor: terraform-executor
     steps:
       - checkout
-      - attach_workspace:
-          at: ./
       - run:
           name: Terraform Plan
           command: |
+            pwd
             cd
             terraform init
             terraform plan
